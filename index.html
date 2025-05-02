@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOPMA UNRI - Koperasi Mahasiswa Universitas Riau</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004080;
+            --secondary: #ff9900;
+            --dark: #333333;
+            --light: #f5f5f5;
+            --accent: #00aa55;
+            --accent-light: #7ae582;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #004080);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-container::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #kopma-logo {
+        width: 85px;            /* Ukuran logo (bisa disesuaikan) */
+        height: auto;            /* Biar proporsinya gak rusak */
+        }
+        
+        .logo span {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           
+            z-index: 1;
+        }
+        
+        .site-title {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .site-tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-list li {
+            position: relative;
+        }
+        
+        .nav-list a {
+            display: block;
+            color: var(--dark);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-list a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-list a.active {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .nav-list a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 1.5rem;
+            right: 1.5rem;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: url('FAMGATH.JPG') center/cover;
+            height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--light), transparent);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 153, 0, 0.4);
+        }
+        
+        .btn:hover::after {
+            left: 100%;
+        }
+        
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-img::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+        }
+        
+        .feature-content {
+            padding: 2rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .feature-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .barcode-section {
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            padding: 4rem 0;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .barcode-section::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(0, 102, 204, 0.05);
+        }
+        
+        .barcode-section::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 153, 0, 0.05);
+        }
+        
+        .barcode-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .barcode-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .barcode-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .barcode-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        .barcode-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .barcode-img {
+            width: 200px;
+            height: 200px;
+            background: #f5f5f5;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #ccc;
+            position: relative;
+        }
+        
+        .barcode-img img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .barcode-img::before {
+            content: "Scan Me";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .barcode-text {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-section {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,102,204,0.05) 0%, rgba(0,102,204,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .about-img::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,102,204,0.2) 0%, rgba(255,153,0,0.2) 100%);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-content h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .about-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .highlight-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary), #004080);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/100/100') center/50px;
+            opacity: 0.05;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .stat-number::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .testimonials {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: "";
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,153,0,0.05) 0%, rgba(255,153,0,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 2rem;
+            padding: 1rem 0 2rem;
+        }
+        
+        .testimonial-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .testimonial-slider::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .testimonial-slider::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 2rem);
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            position: relative;
+            transition: all 0.3s ease;
+            min-width: 300px;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(0, 102, 204, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .cta-section {
+            background: url('/api/placeholder/1600/400') center/cover;
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+        }
+        
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,102,204,0.85), rgba(0,64,128,0.9));
+        }
+        
+        .cta-container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .cta-description {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 0 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 12px;
+            color: var(--secondary);
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-col ul li a i {
+            margin-right: 10px;
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* New styles for products section */
+        .products-section {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .products-section::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0,102,204,0.05) 0%, rgba(0,102,204,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            background: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+        
+        .product-price {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .product-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+        
+        .product-btn {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .product-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .product-btn i {
+            margin-right: 5px;
+        }
+        
+        /* New styles for events section */
+        .events-section {
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .events-section::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,102,204,0.05) 0%, rgba(0,102,204,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-date {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-date i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .event-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .event-info i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .event-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        /* New styles for team section */
+        .team-section {
+            background: white;
+            position: relative;
+        }
+        
+        .team-section::before {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,153,0,0.05) 0%, rgba(255,153,0,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-img {
+            height: 250px;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-img img {
+            transform: scale(1.1);
+        }
+        
+        .team-content {
+            padding: 1.5rem;
+        }
+        
+        .team-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .team-role {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .team-bio {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .team-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .team-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* New styles for gallery */
+        .gallery-section {
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            z-index: 5;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .slide-up {
+            animation: slideUp 1s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Floating animation for cards */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        /* New styles for blog section */
+        .blog-section {
+            background-color: white;
+            position: relative;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-img {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-img img {
+            transform: scale(1.1);
+        }
+        
+        .blog-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-date {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .blog-date i {
+            margin-right: 7px;
+            color: var(--secondary);
+        }
+        
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .blog-read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-read-more:hover {
+            color: var(--secondary);
+        }
+        
+        .blog-read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .barcode-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+            }
+            
+            .nav-list.active {
+                max-height: 500px;
+            }
+            
+            .nav-list li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-list a {
+                padding: 1rem;
+                border-bottom: 1px solid #f1f1f1;
+            }
+            
+            .nav-list a.active::after {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .cta-description {
+                font-size: 1.1rem;
+            }
+            
+            .testimonial-card {
+                flex: 0 0 calc(100% - 2rem);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .site-title {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="LOGOKOPMA.png" alt="KOPMA UNRI Logo" id="kopma-logo">
+                </div>
+                <div>
+                    <h1 class="site-title">KOPMA UNRI</h1>
+                    <p class="site-tagline">Koperasi Mahasiswa Universitas Riau</p>
+                </div>
+            </div>
+          
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-list" id="navList">
+                <li><a href="#home" class="active">Beranda</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#membership">Keanggotaan</a></li>
+                <li><a href="#team">Pengurus</a></li>
+                <li><a href="#events">Acara</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Bersama Membangun<br>Jiwa Solidaritas</h1>
+            <p>Koperasi Mahasiswa Universitas Riau, solusi ekonomi dan pendidikan kewirausahaan bagi mahasiswa di lingkungan kampus.</p>
+            <a href="#membership" class="btn">Gabung Sekarang <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+    
+    <section class="section about-section" id="about">
+        <div class="container about-container">
+            <div class="about-img">
+                <img src="pelantikan.jpg" alt="Tentang KOPMA UNRI">
+            </div>
+            <div class="about-content">
+                <h2>Tentang KOPMA UNRI</h2>
+                <p>Kopma UNRI merupakan salah satu unit kegiatan mahasiswa yang ada di Universitas Riau, dalam bentuk koperasi yang bertujuan untuk mencetak produk yang professional, kompetitif, dan mandiri. Dalam prakteknya Kopma UNRI mendasarkan langkah kerja pada beberapa asas, visi dan misi.</p>
+                <p><b>Sejarah KOPMA UNRI</b></p>
+                <p>Koperasi Mahasiswa Universitas Riau atau yang sering disingkat dengan Kopma UNRI didirikan di Pekanbaru, 12 Juli 1982 memiliki Badan Hukum dari Pemerintah nomor: 924/BH-XIII. Awal berdirinya Kopma UNRI memiliki 20 orang anggota yang merupakan anggota pertama Kopma UNRI dengan AD/ART yang telah disepakati bersama. Usaha yang pertama kali dirintis adalah kebutuhan ATK mahasiswa Universitas Riau. Pada mulanya, kesekretariatan Kopma UNRI berkedudukan di Kampus Universitas Riau, Gobah. Karena mengalami musibah kebakaran, maka kesekretariatan dipindahkan ke Kampus Universitas Riau, Panam. Di sinilah Kopma UNRI mulai membangun, merintis dan mengembangkan usahanya serta pengkaderan anggota-anggotanya</p>
+                <p><b>Visi KOPMA UNRI yaitu</b></p>
+                <p>Menjadikan Kopma UNRI yang berorientasi kepada anggota sebagai badan usaha yang mandiri dan tangguh sekaligus sebagai wahana pengembangan usaha dan pengkaderan kewirakoperasian.</p>
+                <p><b>Misi KOPMA UNRI yaitu</b></p>
+                <p>1. Mewujudkan SDM anggota yang memahami dan menjalankan funsi dan perannya sebagai partisipan aktif di Kopma UR</p>
+                <p>2. Meringankan beban ekonomi dan meningkatkan daya beli anggota</p>
+                <p>3. Menyediakan kebutuhan mahasiswa</p>
+                <p>4. Pengoptimalan, pembenahan, dan pemanfaatan sistem informasi, serta kearsipan dan administrasi data-data organisasi</p>
+                <p>5. Menciptakan kondisi aman dan tertib dengan mendukung kinerja organisasi</p>
+                <p>6. Mewujudkan hubungan yang harmonis baik internal maupun eksternal Kopma UNRI</p>
+                <p>7. Mewujudkan citra Kopma UR sebagai UKM yang bergerak di bidang usaha di Universitas Riau</p>
+                   
+                <a href="#membership" class="btn">Bergabung Dengan Kami</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section stats-section">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <div class="stat-number">1982</div>
+                <div class="stat-label">Tahun Berdiri</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Anggota Aktif</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Unit Usaha</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Kegiatan Tahunan</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Layanan Kami</h2>
+                <p class="section-description">Beragam layanan yang kami sediakan untuk memenuhi kebutuhan mahasiswa dan civitas akademika Universitas Riau.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-img">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Mini Market</h3>
+                        <p>Menyediakan berbagai kebutuhan sehari-hari dengan harga kompetitif untuk mahasiswa.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Percetakan & Fotokopi</h3>
+                        <p>Layanan cetak dokumen, fotokopi, jilid, dan kebutuhan akademik lainnya dengan harga terjangkau.</p>
+                    </div>
+                </div>
+               
+                <div class="feature-card">
+                    <div class="feature-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Pendidikan & Pelatihan</h3>
+                        <p>Program pengembangan soft skill dan hard skill melalui pelatihan kewirausahaan, manajemen, dan kepemimpinan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Produk Unggulan.</h2>
+                <p class="section-description">Banyak produk yang tersedia di KOPMA UNRI LOH🥰</p>
+            </div>
+            <div class="products-container">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://th.bing.com/th/id/OIP.RubZ2dfESZdoNU8Nb4nDYwHaHa?w=199&h=199&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Produk KOPMA">
+                        <div class="product-badge">Populer</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Pop Mie</h3>
+                        <div class="product-price">Start from 6.000</div>
+                        <p class="product-description">Pop Mie enakk,solusi ketika perut kosong di kampus</p>
+                        <div class="product-action">
+                            <!-- <a href="#" class="product-btn"><i class="fas fa-shopping-cart"></i> Beli</a>
+                            <a href="#" class="product-btn"><i class="fas fa-info-circle"></i> Detail</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="bucket.jpg" alt="Produk KOPMA">
+                        <div class="product-badge">Baru</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Bucket Bunga</h3>
+                        <div class="product-price">Start from 15.000</div>
+                        <p class="product-description">Bucket bunga dengan kualitas terbaik</p>
+                        <div class="product-action">
+                            <!-- <a href="#" class="product-btn"><i class="fas fa-shopping-cart"></i> Beli</a>
+                            <a href="#" class="product-btn"><i class="fas fa-info-circle"></i> Detail</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="jajan.jpg" alt="Produk KOPMA">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Jajanan</h3>
+                        <div class="product-price">Start from 500</div>
+                        <p class="product-description">Jajanan yang memanjakan mulut</p>
+                        <div class="product-action">
+                            <!-- <a href="#" class="product-btn"><i class="fas fa-shopping-cart"></i> Beli</a>
+                            <a href="#" class="product-btn"><i class="fas fa-info-circle"></i> Detail</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="minum.jpg" alt="Produk KOPMA">
+                        <div class="product-badge">Terlaris</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Minuman segar</h3>
+                        <div class="product-price">Start from 3.000</div>
+                        <p class="product-description">Minuman yang melegakan dahaga ketika haus di kampus</p>
+                        <div class="product-action">
+                            <!-- <a href="#" class="product-btn"><i class="fas fa-shopping-cart"></i> Beli</a>
+                            <a href="#" class="product-btn"><i class="fas fa-info-circle"></i> Detail</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="JUS.jpeg" alt="Produk KOPMA">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Jus Segar</h3>
+                        <div class="product-price">Coming Soon</div>
+                        <p class="product-description">Jus yang melegakan dahaga ketika haus di kampus</p>
+                        <div class="product-action">
+                            <!-- <a href="#" class="product-btn"><i class="fas fa-shopping-cart"></i> Beli</a>
+                            <a href="#" class="product-btn"><i class="fas fa-info-circle"></i> Detail</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="paket.jpeg" alt="Produk KOPMA">
+                        <div class="product-badge">Terlaris</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Paket dan pulsa</h3>
+                        <div class="product-price">Start from 5.000</div>
+                        <p class="product-description">Kehabisan Paket atau pulsa ketika di kampus? gas ke KOPMA UNRI untuk isi ulang</p>
+                        <div class="product-action">
+                            <!-- <a href="#" class="product-btn"><i class="fas fa-shopping-cart"></i> Beli</a>
+                            <a href="#" class="product-btn"><i class="fas fa-info-circle"></i> Detail</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="konveksi.jpeg" alt="Produk KOPMA">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Konveksi Baju</h3>
+                        <div class="product-price">Start from 50.000</div>
+                        <p class="product-description">Ingin membuat baju atau jaket? Bisa dong di KOPMA UNRI</p>
+                        <div class="product-action">
+                            <!-- <a href="#" class="product-btn"><i class="fas fa-shopping-cart"></i> Beli</a>
+                            <a href="#" class="product-btn"><i class="fas fa-info-circle"></i> Detail</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section barcode-section" id="membership">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Keanggotaan</h2>
+                <p class="section-description">Yuk bergabung di KOPMA UNRI</p>
+            </div>
+            <div class="barcode-container">
+                <div class="barcode-card">
+                    <h3>Instagram</h3>
+                    <div class="barcode-img">
+                        <img src="KOPMA UNRI.png" alt="QR Code Pendaftaran">
+                    </div>
+                    <p class="barcode-text">Yuk Kepoin Instagram KOPMA UNRI,pantau terus informasinya ya🫡</p>
+                    <a href="https://www.instagram.com/kopma_unri?igsh=NzlxYTN1NXRkempp" class="btn">Atau klik link ini</a>
+                </div>
+                <div class="barcode-card">
+                    <h3>KOPMA Pay</h3>
+                    <div class="barcode-img">
+                        <img src="QRIS1.jpg" alt="QR Code KOPMA Pay">
+                    </div>
+                    <p class="barcode-text">Nikmati kemudahan bertransaksi dengan QRIS KOPMA, cukup scan dan bayar</p>
+                    <!-- <a href="#" class="btn">Aktivasi KOPMA Pay</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section events-section" id="events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Acara & Kegiatan</h2>
+                <p class="section-description">Kegiatan dan acara terbaru yang diselenggarakan oleh KOPMA UNRI untuk mengembangkan potensi mahasiswa.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>18 April 2025</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">Pelantikan pengurus baru Koperasi Mahasiswa Universitas Riau</h3>
+                    <div class="event-info">
+                        <i class="far fa-clock"></i>
+                        <span>08:00 - 12:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Aula Rektorat Lt.4, Universitas Riau</span>
+                    </div>
+                    <!-- <p class="event-description">Workshop khusus yang dirancang untuk mengembangkan keterampilan digital marketing bagi mahasiswa dan pelaku UMKM. Peserta akan belajar tentang strategi pemasaran online, social media marketing, dan e-commerce.</p> -->
+                    <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4Mjc0Njk1MDQ5MjU5MTc0?story_media_id=3612665778014903432_2271935197&igsh=MW8yZTJoY3FxbGpzZA==" class="btn">Lihat Feed-Nya Yuk</a>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>26 April 2025</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">Family Gathering</h3>
+                    <div class="event-info">
+                        <i class="far fa-clock"></i>
+                        <span>08:00 - 17:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Alam Mayang Kota Pekanbaru</span>
+                    </div>
+                   <p class="event-description">Acara yang dilakukan untuk mempererat tali silaturrahmi anggota KOPMA UNRI.</p>
+                    <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDc1MzQ2NDY4ODYxOTMw?story_media_id=3619013148055089411_2271935197&igsh=MTQ0dmFlbDdwcmxweA==" class="btn">Lihat Feed-nya yuk</a>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>-</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">-</h3>
+                    <div class="event-info">
+                        <i class="far fa-clock"></i>
+                        <span>-</span>
+                    </div>
+                    <div class="event-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>-</span>
+                    </div>
+                    <p class="event-description">-</p>
+                    <!-- <a href="#" class="btn">Daftar Seminar</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section team-section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pengurus KOPMA UNRI Tahun 2025</h2>
+                <p class="section-description">Kenali tim pengurus yang berdedikasi dalam mengembangkan KOPMA UNRI menjadi koperasi mahasiswa terdepan.</p>
+            </div>
+            <div class="team-container">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="KKFATTIA.jpg" alt="Ketua KOPMA UNRI">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Fattia Mawaddah</h3>
+                        <p class="team-role">Ketua Umum</p>
+                        <p class="team-bio">Mahasiswa Fakultas Keguruan Dan Ilmu Pendidikan Jurusan Pendidikan Matematika</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/fttmwdh_?igsh=cmxsa29zdGU5NWVr"><i class="fab fa-instagram"></i></a>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="GANTENG.jpg" alt="Sekretaris KOPMA UNRI">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Muhammad Dafa Ariady</h3>
+                        <p class="team-role">Sekretaris Umum</p>
+                        <p class="team-bio">Mahasiswa Fakultas Matematika Dan Ilmu Pengetahuan Alam Jurusan Sistem Informasi.</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/muhammaddafaariady?igsh=MXhnbjdsczNmcThhbg=="><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="KK NISA.jpg" alt="Bendahara KOPMA UNRI">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Annisa Septina</h3>
+                        <p class="team-role">Bendahara Umum</p>
+                        <p class="team-bio">Mahasiswa Fakultas Ilmu Sosial Dan Politik Jurusan administrasi Bisnis</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/annisaseptinaa?igsh=MW5leHV5dmM2czFwNA=="><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="KK SRI.jpg" alt="Manajer Usaha KOPMA UNRI">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Sri Kazmidawati 
+                        </h3>
+                        <p class="team-role">KABID PSDA</p>
+                        <p class="team-bio">Mahasiswa Fakultas Perikanan Jurusan Sosial ekonomi perikanan</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/sri_kazmidawati?igsh=Y291bWNkbmU0a21j"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="KKNINDI.jpg" alt="Bendahara KOPMA UNRI">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Nindi Sofianti  </h3>
+                        <p class="team-role">KABID USAHA</p>
+                        <p class="team-bio">Mahasiswa Fakultas Perikanan Jurusan Sosial Ekonomi Perikanan</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/xorain.nindy?igsh=c3dlbzI2eTM1Z3Jn"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="KKJESSICA.jpg" alt="Bendahara KOPMA UNRI">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name"> Jesica Alyssa Wardani</h3>
+                        <p class="team-role">KABID HUMAS</p>
+                        <p class="team-bio">Mahasiswa Fakultas Matematika dan Ilmu Pengetahuan Alam Jurusan Matematika.</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/__alyssa.jsy?igsh=NzJ0YjVlajE2ZGF5"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="KKSANIA.jpg" alt="Bendahara KOPMA UNRI">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Sania Habibah</h3>
+                        <p class="team-role">KABID KOMINFO</p>
+                        <p class="team-bio">Mahasiswa Fakultas Ilmu Sosial dan Politik jurusan Ilmu Komunikasi</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/starny.a?igsh=MjYwajAydDJqMnI="><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Galeri Kegiatan</h2>
+                <p class="section-description">Dokumentasi berbagai kegiatan dan momen berharga dalam perjalanan KOPMA UNRI.</p>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="pelantikan.jpg" alt="Kegiatan KOPMA UNRI">
+                    <div class="gallery-caption">
+                        <h4>Pelantikan Pengurus KOPMA UNRI</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="FAMGATH.jpg" alt="Kegiatan KOPMA UNRI">
+                    <div class="gallery-caption">
+                        <h4>Family Gathering</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="makrab.jpg" alt="Kegiatan KOPMA UNRI">
+                    <div class="gallery-caption">
+                        <h4>Makrab</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="rapat.jpg" alt="Kegiatan KOPMA UNRI">
+                    <div class="gallery-caption">
+                        <h4>Rapat Umum</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="REKTORAT.jpg" alt="Kegiatan KOPMA UNRI">
+                    <div class="gallery-caption">
+                        <h4>Fotoanggota dan kepengurusan tahun 2024</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="talKshow.jpg" alt="Kegiatan KOPMA UNRI">
+                    <div class="gallery-caption">
+                        <h4>Talkshow bisnis masa depan</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section blog-section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Artikel & Berita</h2>
+                <p class="section-description">Informasi terbaru seputar KOPMA UNRI, kewirausahaan, dan perkembangan koperasi di Indonesia.</p>
+            </div>
+            <div class="blog-card">
+                <div class="blog-img">
+                    <img src="image.png" alt="Blog KOPMA UNRI">
+                    <div class="blog-category">Inspirasi</div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">
+                        <i class="far fa-calendar"></i>
+                        <span>10 April 2025</span>
+                    </div>
+                    <h3 class="blog-title">Kisah Sukses Alumni KOPMA yang Kini Jadi Pengusaha Nasional</h3>
+                    <p class="blog-excerpt">Mengenal lebih dekat perjalanan alumni KOPMA UNRI yang berhasil membangun bisnis skala nasional dari pengalaman di koperasi.</p>
+                    <a href="#" class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-container">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="/api/placeholder/500/300" alt="Blog KOPMA UNRI">
+                        <div class="blog-category">-</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="far fa-calendar"></i>
+                            <span>-</span>
+                        </div>
+                        <h3 class="blog-title">-</h3>
+                        <p class="blog-excerpt">-</p>
+                        <a href="#" class="blog-read-more"> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="/api/placeholder/500/300" alt="Blog KOPMA UNRI">
+                        <div class="blog-category"></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">
+                            <i class="far fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <h3 class="blog-title">-</h3>
+                        <p class="blog-excerpt">-</p>
+                        <a href="#" class="blog-read-more">-<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Testimoni Anggota</h2>
+                <p class="section-description">Apa kata mereka tentang pengalaman bergabung dengan KOPMA UNRI.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">KOPMA UNRI memberikan saya pengalaman berharga dalam mengelola usaha dan memahami prinsip koperasi. Skills yang saya dapatkan sangat berguna untuk karir saya setelah lulus.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">AF</div>
+                        <div class="author-info">
+                            <h4>Maulana</h4>
+                            <p>Angkatan 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">Melalui KOPMA, saya belajar banyak tentang kewirausahaan sambil kuliah. Program pelatihan dan mentoring yang diberikan sangat membantu mengembangkan ide bisnis saya.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">SR</div>
+                        <div class="author-info">
+                            <h4>Dafa</h4>
+                            <p>Pro Player</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">Bergabung dengan KOPMA adalah keputusan terbaik selama kuliah. Saya mendapatkan jaringan luas, pengalaman organisasi, dan keuntungan finansial dari SHU tahunan.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">BH</div>
+                        <div class="author-info">
+                            <h4>Rafli</h4>
+                            <p>Staff Bendum</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">KOPMA UNRI tidak hanya mengajarkan tentang bisnis, tapi juga nilai-nilai kerjasama, gotong royong, dan tanggung jawab yang sangat berharga dalam kehidupan.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">LS</div>
+                        <div class="author-info">
+                            <h4>Aji</h4>
+                            <p>Pengurus Periode 2025-2026</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-content">Koperasi Mahasiswa Universitas Riau sangat membantu saya sebagai mahasiswa dalam memenuhi kebutuhan sehari-hari dengan harga yang terjangkau. Layanan yang diberikan juga ramah dan profesional. Saya sangat puas dengan pengalaman bertransaksi di koperasi ini dan merekomendasikannya kepada teman-teman lainnya!
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-img">LS</div>
+                        <div class="author-info">
+                            <h4>Raflin</h4>
+                            <p>Mahasiswa Kehutanan UNRI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section cta-section">
+        <div class="container cta-container">
+            <h2 class="cta-title">Bergabunglah dengan KOPMA UNRI Sekarang!</h2>
+            <p class="cta-description">Kembangkan potensi, jalin relasi, dan dapatkan pengalaman berharga bersama ratusan mahasiswa dengan visi yang sama dalam membangun ekonomi kampus.</p>
+            <div class="cta-buttons">
+                <a href="https://api.whatsapp.com/send/?phone=6281270403788&text&type=phone_number&app_absent=0" class="btn">Daftar Keanggotaan</a>
+                <a href="#" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>KOPMA UNRI</h3>
+                    <p>Koperasi Mahasiswa Universitas Riau adalah wadah pengembangan potensi kewirausahaan, pendidikan koperasi, dan kesejahteraan mahasiswa berbasis koperasi.</p>
+                    <div class="social-icons">
+                        <a href="http://www.youtube.com/@koperasimahasiswauniversit6245" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/KopmaUnri?t=vBsCSdHO9DHoE2SwTekIKA&s=09" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/kopma_unri?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@koperasimahasiswaunri" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Penting</h3>
+                    <ul>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Layanan</a></li>
+                        <li><a href="#membership"><i class="fas fa-chevron-right"></i> Keanggotaan</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Produk</a></li>
+                        <li><a href="#blog"><i class="fas fa-chevron-right"></i> Blog </a></li>
+                        <li><a href="#kontak"><i class="fas fa-chevron-right"></i> Kontak </a></li>
+                        <li><a href="#events"><i class="fas fa-chevron-right"></i> Acara</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Jam Operasional</h3>
+                    <ul>
+                        <li><a href="#"><i class="far fa-clock"></i> Senin - Jumat: 08:00 - 17:00</a></li>
+                        <li><a href="#"><i class="far fa-clock"></i> Sabtu: 09:00 - 15:00</a></li>
+                        <li><a href="#"><i class="far fa-clock"></i> Minggu & Libur Nasional: Tutup</a></li>
+                    </ul>
+                    <h3 class="mt-4">Newsletter</h3>
+                    <p>Dapatkan informasi terbaru dari KOPMA UNRI</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Anda" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak Kami</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Prof.Aras Mulyadi, Stadion Mini, Universitas Riau, Panam, Pekanbaru 28293</p>
+                        <p><i class="fas fa-phone"></i> +62-812-7040-3788</p>
+                        <p><i class="fas fa-envelope"></i> koperasimahasiswaunri@gmail.com</p>
+                        <!-- <p><i class="fas fa-globe"></i> www.kopmaunri.ac.id</p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KOPMA UNRI - Koperasi Mahasiswa Universitas Riau. All Rights Reserved.</p>
+                <p>&copy; Created by Sekum Ganteng 2025</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navList = document.getElementById('navList');
+        
+        mobileToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close mobile navigation if open
+                if (navList.classList.contains('active')) {
+                    navList.classList.remove('active');
+                }
+            });
+        });
+        
+        // Highlight Active Navigation Links on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-list a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Animation on Scroll Effect
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.feature-card, .product-card, .barcode-card, .team-card, .event-card, .blog-card, .gallery-item, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('fade-in');
+                }
+            });
+        });
+        
+        // Auto Testimonial Slider
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        let scrollAmount = 0;
+        const slideWidth = document.querySelector('.testimonial-card').offsetWidth + 32; // Card width + margin
+        
+        setInterval(() => {
+            testimonialSlider.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            
+            scrollAmount += slideWidth;
+            
+            // Reset when reaching the end
+            if (scrollAmount >= testimonialSlider.scrollWidth - testimonialSlider.offsetWidth) {
+                scrollAmount = 0;
+            }
+        }, 5000);
+
+        
+    </script>
+</body>
+</html>
+
+
+
